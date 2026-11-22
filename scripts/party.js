@@ -48,7 +48,7 @@ export async function joinHeinz() {
   await a.unsetFlag(MOD, "later"); await a.setFlag(MOD, "joined", true);
   const sc = game.scenes.active;
   if (sc && !sc.tokens.find((t) => t.actorId === a.id)) await sc.createEmbeddedDocuments("Token", [{ ...(await a.getTokenDocument()).toObject(), x: 200, y: 200 }]);
-  if (!a.getFlag(MOD, "introSent")) await (await import("./session.js?v=21")).sendIntros([a.id]).catch(() => null);
+  if (!a.getFlag(MOD, "introSent")) await (await import("./session.js?v=23")).sendIntros([a.id]).catch(() => null);
   await partyNote(false);
   ui.notifications.info("ดร. ไฮนซ์เข้าตี้แล้ว · ส่งข้อความเปิดเรื่องให้เจ้าของแล้ว");
 }

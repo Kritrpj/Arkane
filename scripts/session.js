@@ -159,13 +159,14 @@ async function huntResult(d) {
   const ok = d.total >= d.hdc;
   const loss = ok ? 0 : (await new Roll("1d4").evaluate()).total;
   if (perry) await perry.setFlag(MOD, "huntDays", 0);
+  let lensNote = ""; if (perry) { try { const g = await import("./gauge.js?v=1"); const o = await g.huntOutcome(perry, d.total - d.hdc); lensNote = `<br><small>ระบบ Gauge: ${o === "pass" ? "กินอิ่มเงียบ" : o === "minor" ? "กินอิ่ม แต่มีคราบเลือด" : "พลาดหนัก ไม่อิ่ม (RSF ยังนับต่อ)"}</small>`; } catch (e) { console.warn(MOD, "lens hunt", e); } }
   const seers = game.actors.filter((a) => a.type === "character" && a.hasPlayerOwner && a.id !== d.actorId && !a.getFlag(MOD, "later") && !a.getFlag(MOD, "retired") && (a.system.skills?.prc?.passive ?? 10) >= (d.notice ?? 15));
   const html = ok
     ? `<b>${esc(d.who)}</b> ทอย ${esc(d.name)} ได้ <b>${d.total}</b> (DC ${d.hdc}) <b>ผ่าน ✓</b><br>ล่าเงียบเชียบ ป้อน Hadar สำเร็จ กลับมาพักได้ไม่มีร่องรอย`
     : `<b>${esc(d.who)}</b> ทอย ${esc(d.name)} ได้ <b>${d.total}</b> (DC ${d.hdc}) <b>ไม่ผ่าน ✗</b><br>ป้อน Hadar สำเร็จแต่ทุลักทุเล · เสีย HP <b>${loss}</b> (1d4 ยังไม่ได้หักให้) หรือมีคราบเลือดดำ/ไอเย็นติดเสื้อ<br>
       เช้าวันถัดไป ผู้ที่ Passive Perception ≥ ${d.notice ?? 15}: <b>${seers.map((a) => esc(a.name)).join(", ") || "ไม่มี"}</b> สังเกตเห็นรอยผิดปกติ · คนอื่นขอทอย Perception/Medicine ได้<br>
       ถ้าใครแอบตื่นมาดูตอนกลางคืน ให้ทอย Stealth/Perception แข่งกับเพอร์รี่`;
-  ChatMessage.create({ whisper: [game.user.id], content: `<div class="rw-card">${html}<br><small>ตัวนับอดล่ารีเซ็ตเป็น 0 แล้ว</small></div>` });
+  ChatMessage.create({ whisper: [game.user.id], content: `<div class="rw-card">${html}<br><small>ตัวนับอดล่ารีเซ็ตเป็น 0 แล้ว</small>${lensNote}</div>` });
 }
 
 // ---------- 2. before Chapter 1: remove everything picked up in the practice scene, give the starter kit back, full rest

@@ -37,9 +37,13 @@ async function findInPacks(type, name) {
   try { return (await best.pack.getDocument(best.id))?.toObject(); } catch { return null; }
 }
 const gear = (name, img, desc) => ({ name, type: "loot", img, system: { description: { value: P(desc) }, quantity: 1 } });
+const WAND_NAME = "ไม้กายสิทธิ์ของ Lady (Arcane Focus)";
+// the wand is "equipment (trinket)" so the bag can put it in an accessory slot (loot cannot be equipped)
+const wandData = () => ({ name: WAND_NAME, type: "equipment", img: `modules/${MOD}/items/perry-wand.webp`,
+  system: { type: { value: "trinket" }, quantity: 1, equipped: false, description: { value: P("ไม้เรียวสีเข้ม ลำไม้เป็นข้อ มีลูกกลมสลักลายดาวสี่แฉกเรียงลดหลั่นสี่ลูกไปจนถึงปลายแหลม ด้ามมีวงแหวนสีทองแดง · เป็น Arcane Focus ไม่ใช่อาวุธ · ลำแสง Eldritch Blast ออกจากไม้นี้ · เพื่อนที่แตะไม้ใส่เพอร์รี่ขณะดึงสติ (Persuasion/Arcana DC 15) ได้ Advantage") } } });
 
 const BIO = [
-  P("<b>อายุ 17 · Elf (High Elf) สายเลือดครึ่งเอลฟ์ · Warlock (Archfey) · Background: Charlatan</b>"),
+  P("<b>อายุ 17 · Half-Elf (ครึ่งเอลฟ์ · กฎ 2024 ใช้ชุดคุณสมบัติ Elf สายเลือด High Elf) · Warlock (Archfey) · Background: Charlatan</b>"),
   P("<b>เรื่องราว:</b> ลูกสาวของ ดร. ไฮนซ์ ช่วยพ่อซ่อมเครื่องจักรในร้านมาตั้งแต่เด็ก จนวันหนึ่งเกิดเหตุการณ์ที่หอดูดาวร้าง ทำให้เธอใช้เวทมนตร์ผ่านไม้กายสิทธิ์ได้ · เธอออกเดินทางเพื่อ<b>ตามหาพ่อ</b>"),
   P("<b>รูปลักษณ์:</b> เอลฟ์ผมดำยาวยุ่ง ตาแดง สวมหมวกเบเร่ต์กับเสื้อโค้ทสีน้ำตาลเข้ม ถือไม้เรียวสีเข้มเหมือนก้านเถาวัลย์"),
   P("<b>ความลับ:</b> แดกไรก็ไม่อร่อย แต่ชอบโกโก้นะ กินแล้วหลับ"),
@@ -49,7 +53,12 @@ const BIO = [
 export async function createPerry() {
   if (!game.user.isGM) return ui.notifications.warn("เฉพาะ GM");
   const old = game.actors.find((a) => a.getFlag(MOD, "pc") === "perry");
-  if (old) { await old.update({ img: IMG, "prototypeToken.texture.src": TOK }); return ui.notifications.info("มีเพอร์รี่ในระบบแล้ว · อัปเดตรูปให้ใหม่"); }
+  if (old) {
+    await old.update({ img: IMG, "prototypeToken.texture.src": TOK });
+    const lw = old.items.find((i) => i.name === WAND_NAME && i.type === "loot");
+    if (lw) { await lw.delete(); await old.createEmbeddedDocuments("Item", [wandData()]); }
+    return ui.notifications.info("มีเพอร์รี่ในระบบแล้ว · อัปเดตรูปและไม้กายสิทธิ์ให้ใหม่");
+  }
   const folder = game.folders.find((f) => f.name === "Arkane 1920s · ผู้เล่น" && f.type === "Actor")
     ?? await Folder.create({ name: "Arkane 1920s · ผู้เล่น", type: "Actor", color: "#801820" });
   // the sheet belongs to Dr. Heinz's player
@@ -88,8 +97,7 @@ export async function createPerry() {
       activities: { [rid]: { _id: rid, type: "attack", name: "โจมตี (CHA)", attack: { ability: "cha", type: { value: "melee", classification: "weapon" } },
         damage: { includeBase: true, parts: [{ bonus: "@abilities.cha.mod", types: ["necrotic"] }] } } } },
     flags: { [MOD]: { id: "melee-pact-rapier" } } };
-  const wand = gear("ไม้กายสิทธิ์ของ Lady (Arcane Focus)", `modules/${MOD}/items/perry-wand.webp`,
-    "ไม้เรียวสีเข้ม ลำไม้เป็นข้อ มีลูกกลมสลักลายดาวสี่แฉกเรียงลดหลั่นสี่ลูกไปจนถึงปลายแหลม ด้ามมีวงแหวนสีทองแดง · เป็น Arcane Focus ไม่ใช่อาวุธ · ลำแสง Eldritch Blast ออกจากไม้นี้ · เพื่อนที่แตะไม้ใส่เพอร์รี่ขณะดึงสติ (Persuasion/Arcana DC 15) ได้ Advantage");
+  const wand = wandData();
   const forge = gear("Forgery Kit (ชุดปลอมแปลงเอกสาร)", "icons/sundries/documents/document-sealed-red-tan.webp", "ปากกา หมึก ตราปลอม และกระดาษเก่า · ชำนาญจาก Background Charlatan");
   try { await actor.createEmbeddedDocuments("Item", [cls, rapier, wand, forge]); } catch (e) { console.error(MOD, "perry items", e); }
   const n = await addStep(actor, plan[1], 1);

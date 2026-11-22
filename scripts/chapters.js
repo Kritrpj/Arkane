@@ -94,7 +94,7 @@ AC 12 · HP 22 · CR 1/2 · Deception +3 Medicine +3
 ## Action
 - เข็มกล่อมประสาท +4 · 1d4+2 แทง · เซฟ CON DC 12 ไม่ผ่านติด Poisoned และความเร็ว 0 จนจบเทิร์นถัดไป
 ## ลักษณะ
-ถ้าตี้เข้าทางประตูหน้าเป็นผู้ป่วย พยาบาลจะฉีดยาให้ทุกคน (Disadvantage เซฟ WIS จนกว่าจะพัก) แต่จะพาไปหอผู้ป่วย A โดยไม่สงสัย`},
+ถ้าผู้เล่นปลอมเป็นคนไข้ พยาบาลจะฉีดยาให้ทุกคน (Disadvantage เซฟ WIS จนกว่าจะพัก) แต่จะพาไปหอผู้ป่วย A โดยไม่สงสัย`},
   { key: "tommy", ch: 3, name: "สิบโททอมมี่ เรย์ (ผู้ป่วยที่ยังมีสติ)", ab: [12, 12, 10, 11, 9, 12], ac: 10, hp: 9, cr: 0, walk: 25, disp: 1,
     atk: [],
     text: `ทหารหนุ่มที่รอดจากรอยแยกสีขี้เถ้า ร่างกายผอมจากการถูกดูดพลัง แต่ยังพอมีสติ เคยรู้จักอาเธอร์ เพนเดิลตัน
@@ -263,10 +263,7 @@ async function ensureItems() {
 const itemData = (id, qty) => { const s = game.items.find((i) => i.getFlag(MOD, "id") === id); if (!s) return null; const o = s.toObject(); delete o._id; delete o.folder; if (qty && "quantity" in o.system) o.system.quantity = qty; return o; };
 async function lootPile(sc, name, [x, y], items, gp = 0, icon = "icons/svg/chest.svg", spot = null) {
   const list = items.map(([id, q]) => itemData(id, q)).filter(Boolean);
-  const gone = items.filter(([id]) => !itemData(id)).map(([id]) => id);
-  if (gone.length) ui.notifications.warn(`หีบ "${name}": ไม่พบไอเท็มในโลก ${gone.join(", ")} · กดมาโคร "สร้างปืนและของในเกม" / ของใช้ก่อน แล้วกดวางหีบอีกครั้งเพื่อเติมของที่ขาด`);
-  const stocked = items.map(([id]) => id).filter((id) => !gone.includes(id));
-  const tflags = spot ? { [MOD]: { spot, stocked } } : {};
+  const tflags = spot ? { [MOD]: { spot } } : {};
   if (game.modules.get("item-piles")?.active && game.itempiles?.API?.createItemPile) {
     try {
       const r = await game.itempiles.API.createItemPile({ position: { x: x * G, y: y * G }, sceneId: sc.id, items: list, createActor: true, pileActorName: name,
@@ -331,11 +328,11 @@ const CH = {
 - ชนะบท: ปลดทหารและหยุดเครื่อง หรือฆ่าเครน
 - เลเวลแนะนำ: 3–4 (จบบทขึ้นเลเวล 5)
 ## ก่อนเข้า (จุดพักเชิงเนิน)
-- ตี้พักที่โรงเตี๊ยมสาขาเชิงเนิน ห่างโรงพยาบาลราว 450 เมตร (มาโคร "Chapter 2.6: จุดพักเชิงเนิน") ตี้ได้ใบส่งตัวจากโรงเตี๊ยม เช้าวันที่ 3 สอดแนมจากเนินแล้วเลือกทางเข้า ทั้งตี้ต้องเลือกทางเดียวกัน แยกทางไม่ได้ ดูบันทึก "จุดพักก่อน Chapter 3 (DM)"
-## ทางเข้า (ผู้เล่นเลือก 2 ทาง)
-- ประตูหน้า: ทุกคนเข้าเป็นผู้ป่วยตามใบส่งตัว ต้องเล่นบทผู้ป่วยตลอดช่วงอยู่ในตึก ถือของและใช้ความสามารถได้ครบ แต่ทุกคนถูกฉีดยา (Disadvantage เซฟ WIS จนกว่าจะพัก) พยาบาลพาไปหอผู้ป่วย A
-- อ้อมป่าไปหลังโรงพยาบาล: ไม่มีอุปสรรคระหว่างทาง เริ่มเข้าตึกจากด้านหลัง
-- ส่งเสียงดังหรือถูกจับได้ข้างใน: ผู้คุมทั้งตึกตื่น เครนเริ่มชาร์จเครื่องทันที นาฬิกา +1
+- ตี้พักที่โรงเตี๊ยมสาขาเชิงเนิน ห่างโรงพยาบาลราว 450 เมตร (มาโคร "Chapter 2.6: จุดพักเชิงเนิน") เช้าวันที่ 3 สอดแนมจากเนินแล้วเลือกทางเข้า ดูบันทึก "จุดพักก่อน Chapter 3 (DM)"
+## ทางเข้า (ผู้เล่นเลือก)
+- ปลอมเป็นคนไข้: เข้าหอผู้ป่วย A ง่าย แต่ถูกฉีดยา (Disadvantage เซฟ WIS จนกว่าจะพัก)
+- ปลอมเป็นเจ้าหน้าที่: เข้าห้องเวชระเบียนได้ เจอรายชื่อแบตเตอรี่สังเวย
+- บุกเข้าไป: ผู้คุมทั้งตึกตื่น เครนเริ่มชาร์จเครื่องทันที นาฬิกา +1
 ## จุดสำคัญ
 - หอผู้ป่วย A: สิบโททอมมี่ เรย์ ผู้ป่วยที่ยังมีสติ บอกทางลงใต้ดิน
 - ห้องพยาบาล: กุญแจห้องใต้ดิน เข็มกล่อมประสาท
@@ -346,18 +343,18 @@ const CH = {
 - ฆ่าเครนแต่ปล่อยเครื่อง: นาฬิกา +1
 - ล้มเหลว: นาฬิกา +2 · รุ่งเช้าหมอกเขียวลอยจากท่อระบายน้ำ`,
     scenes: [{ map: "hospital", name: "Chapter 3: โรงพยาบาลทหารผ่านศึก (ชั้นล่าง)",
-      notes: [["1 ทางเข้าหลัก", 30.5, 24.5, "ประตูไม้โอ๊กคู่ ยามกะดึก 1 คน (ใช้ชีทมือปืนซินดิเคทได้)\n- ลงทะเบียนเป็นผู้ป่วยตามใบส่งตัวจากโรงเตี๊ยม: Deception DC 13 ต่อพยาบาล · มีจดหมายของรอสโซ/เครนหรือบัตรตำรวจเป็นหลักฐาน ได้ Advantage"],
-        ["2 ล็อบบี้", 30.5, 19, "เคาน์เตอร์ต้อนรับ พยาบาลลัทธิยิ้มตลอดเวลา\n- สมุดเยี่ยมไข้: ชื่ออาเธอร์ เพนเดิลตัน มาเยี่ยม \"ผู้ป่วย 17\" ทุกเดือน"],
-        ["3 หอผู้ป่วย A", 20, 9.5, "ทหาร 8 คนนอนนิ่ง ตาเปิดค้าง แขนมีรอยเข็ม\n- สิบโททอมมี่ เรย์ ยังมีสติ บอกทางลงใต้ดิน"],
-        ["4 ห้องเวชระเบียน", 28.5, 8, "ตู้เอกสาร (Investigation DC 12): รายชื่อแบตเตอรี่สังเวย"],
-        ["5 ห้อง ผอ.", 34.5, 9.5, "โหลดองชิ้นส่วนที่เต้นตุบ 5 โหล พรมแดงปิดช่องลับใต้พื้น\n- ช่องลับ (Perception DC 14): บันทึกของ นพ. เครน · เครนไม่อยู่ เขาอยู่ใต้ดินกับเครื่อง"],
-        ["6 หอผู้ป่วย B", 41.5, 9.5, "ห้องพักผู้คุม ผู้คุมกลายพันธุ์ 1 ตัวนอนอยู่ (Stealth DC 13 ผ่านได้โดยไม่ตื่น)"],
-        ["7 ห้องพยาบาล", 18, 21, "ตู้ยา: เข็มกล่อมประสาท ×3 · กุญแจห้องใต้ดินอยู่กับพยาบาลหัวหน้า"],
-        ["8 ห้องช็อตไฟฟ้า", 23.5, 17.5, "เก้าอี้รัดตัวกับเครื่องช็อต ถ้าผู้เล่นถูกจับได้ จะถูกพามาที่นี่ (2d6 ฟ้าผ่าต่อรอบ จนกว่าจะหลุด Athletics DC 14)"],
-        ["9 บันไดลงใต้ดิน", 43, 19, "ประตูลับหลังผนังห้องเก็บของ (กุญแจ B หรือ Thieves' Tools DC 16 หรือ Investigation DC 15 หาเจอ)\n- เดินเข้าช่องบันไดแล้วระบบถามว่าจะลงไหม"]],
-      npcs: [["nurse", 30.5, 18.5], ["nurse", 18, 18.5], ["orderly", 41.5, 9.5], ["orderly", 38.5, 22.2], ["tommy", 21, 9.5]],
-      loot: [["ตู้เอกสาร", [29.5, 10.5], [["c3-list"]], 0, "modules/arkane-1920s/items/pile-cabinet.webp"], ["ตู้ยา", [16, 20.5], [["c3-syringe", 3], ["c3-key"]], 0, "modules/arkane-1920s/items/pile-medcab.webp"], ["ช่องลับใต้พรม", [33, 11.8], [["c3-notes"]], 35, "modules/arkane-1920s/items/pile-rug.webp"]],
-      cover: [["ที่กำบัง: เคาน์เตอร์ล็อบบี้", [28, 17, 5, 1]], ["ที่กำบัง: โต๊ะครัว", [36, 17, 3, 4]]] },
+      notes: [["1 ทางเข้าหลัก", 17.5, 20.5, "ประตูไม้โอ๊กคู่ ยามกะดึก 1 คน (ใช้ชีทมือปืนซินดิเคทได้)\n- ปลอมตัว: Deception DC 13 · มีจดหมายของรอสโซ/เครนเป็นหลักฐาน ได้ Advantage"],
+        ["2 ล็อบบี้", 17.5, 15, "เคาน์เตอร์ต้อนรับ พยาบาลลัทธิยิ้มตลอดเวลา\n- สมุดเยี่ยมไข้: ชื่ออาเธอร์ เพนเดิลตัน มาเยี่ยม \"ผู้ป่วย 17\" ทุกเดือน"],
+        ["3 หอผู้ป่วย A", 7, 5.5, "ทหาร 8 คนนอนนิ่ง ตาเปิดค้าง แขนมีรอยเข็ม\n- สิบโททอมมี่ เรย์ ยังมีสติ บอกทางลงใต้ดิน"],
+        ["4 ห้องเวชระเบียน", 15.5, 4, "ตู้เอกสาร (Investigation DC 12): รายชื่อแบตเตอรี่สังเวย"],
+        ["5 ห้อง ผอ.", 21.5, 5.5, "โหลดองชิ้นส่วนที่เต้นตุบ 5 โหล พรมแดงปิดช่องลับใต้พื้น\n- ช่องลับ (Perception DC 14): บันทึกของ นพ. เครน · เครนไม่อยู่ เขาอยู่ใต้ดินกับเครื่อง"],
+        ["6 หอผู้ป่วย B", 28.5, 5.5, "ห้องพักผู้คุม ผู้คุมกลายพันธุ์ 1 ตัวนอนอยู่ (Stealth DC 13 ผ่านได้โดยไม่ตื่น)"],
+        ["7 ห้องพยาบาล", 5, 17, "ตู้ยา: เข็มกล่อมประสาท ×3 · กุญแจห้องใต้ดินอยู่กับพยาบาลหัวหน้า"],
+        ["8 ห้องช็อตไฟฟ้า", 10.5, 13.5, "เก้าอี้รัดตัวกับเครื่องช็อต ถ้าผู้เล่นถูกจับได้ จะถูกพามาที่นี่ (2d6 ฟ้าผ่าต่อรอบ จนกว่าจะหลุด Athletics DC 14)"],
+        ["9 บันไดลงใต้ดิน", 30, 15, "ประตูลับหลังผนังห้องเก็บของ (กุญแจ B หรือ Thieves' Tools DC 16 หรือ Investigation DC 15 หาเจอ)\n- เดินเข้าช่องบันไดแล้วระบบถามว่าจะลงไหม"]],
+      npcs: [["nurse", 17.5, 14.5], ["nurse", 5, 14.5], ["orderly", 28.5, 5.5], ["orderly", 25.5, 18.2], ["tommy", 8, 5.5]],
+      loot: [["ตู้เอกสาร", [16.5, 6.5], [["c3-list"]], 0, "modules/arkane-1920s/items/pile-cabinet.webp"], ["ตู้ยา", [3, 16.5], [["c3-syringe", 3], ["c3-key"]], 0, "modules/arkane-1920s/items/pile-medcab.webp"], ["ช่องลับใต้พรม", [20, 7.8], [["c3-notes"]], 35, "modules/arkane-1920s/items/pile-rug.webp"]],
+      cover: [["ที่กำบัง: เคาน์เตอร์ล็อบบี้", [15, 13, 5, 1]], ["ที่กำบัง: โต๊ะครัว", [23, 13, 3, 4]]] },
     { map: "basement", name: "Chapter 3: ใต้ดินโรงพยาบาล (หอผู้ป่วยเนื้อ)",
       notes: [["1 บันได", 3.5, 3.5, "บันไดขึ้นชั้นล่าง (เดินเข้าช่องบันได)\n- อากาศชื้น ได้ยินเสียงหัวใจเต้นจากผนัง"],
         ["2 ทางเดินไม่สิ้นสุด", 14, 4, "ทุกคนทอยความหวาดผวา DC 16 (เกินจะรับไหว)\n- ใครหันหลังกลับ: เซฟ WIS DC 13 ไม่ผ่านกลับไปยืนต้นทางเดิน\n- ผนังเต้นเป็นจังหวะเดียวกับเครื่อง"],
@@ -368,7 +365,7 @@ const CH = {
       npcs: [["orderly", 20, 4, true], ["orderly", 8, 17], ["director", 25.5, 14.5], ["nurse", 20, 19.5], ["machine", 23, 17.5]],
       loot: [],
       cover: [["ที่กำบัง: เตียงหอผู้ป่วย", [3, 14, 7, 2]]] }],
-    links: [["hospital", [43, 20, 1, 1], "basement", [3, 2, 1, 1], "ลงใต้ดิน"], ["basement", [2, 2, 1, 1], "hospital", [42, 20, 1, 1], "ขึ้นชั้นล่าง"]]
+    links: [["hospital", [30, 16, 1, 1], "basement", [3, 2, 1, 1], "ลงใต้ดิน"], ["basement", [2, 2, 1, 1], "hospital", [29, 16, 1, 1], "ขึ้นชั้นล่าง"]]
   },
   4: {
     title: "Chapter 4: ห้วงนิทราใต้อาร์คเคน",
@@ -404,6 +401,28 @@ const CH = {
 };
 
 /* ---------------- build ---------------- */
+// Chapter 3 was too dark (players only saw small pools of light): global light (so everyone sees what is in line of sight, walls still block it,
+// fog of war still reveals as they explore), lower darkness, and bigger lamps.
+const BRIGHT = { hospital: { d: 0.35, k: 2.5 }, basement: { d: 0.5, k: 2.5 } };
+const scaleLights = (ls, k) => (ls ?? []).map((l) => ({ ...l, config: { ...l.config, dim: Math.round((l.config?.dim ?? 0) * k), bright: Math.round((l.config?.bright ?? 0) * k) } }));
+export async function brightenCh3(force = false) {
+  if (!game.user.isGM) return 0;
+  let n = 0;
+  for (const [map, B] of Object.entries(BRIGHT)) {
+    const def = CH[3]?.scenes?.find((x) => x.map === map);
+    const sc = def && game.scenes.getName(def.name);
+    if (!sc || (!force && sc.getFlag(MOD, "bright") === 2)) continue;
+    try {
+      await sc.update({ "environment.darknessLevel": B.d, "environment.globalLight.enabled": true });
+      const ups = sc.lights.map((l) => ({ _id: l.id, "config.dim": Math.round((l.config.dim || 0) * B.k), "config.bright": Math.round((l.config.bright || 0) * B.k) }));
+      if (ups.length) await sc.updateEmbeddedDocuments("AmbientLight", ups);
+      await sc.setFlag(MOD, "bright", 2); n++;
+    } catch (e) { console.warn(MOD, "brighten", map, e); }
+  }
+  if (n) ui.notifications.info(`Chapter 3: ปรับให้สว่างขึ้นแล้ว ${n} ฉาก (เห็นห้องทั้งหมดในแนวสายตา ไม่ใช่แค่ใกล้ไฟ)`);
+  return n;
+}
+
 async function buildScene(ch, def, keyJournal) {
   let sc = game.scenes.getName(def.name);
   if (sc) return sc;
@@ -417,7 +436,8 @@ async function buildScene(ch, def, keyJournal) {
   sc = await Scene.create({ name: def.name, folder: (await folder("Scene", `Arkane 1920s · Chapter ${ch}`)).id, navigation: false, navName: def.name.replace(/^Chapter \d: /, ""),
     background: { src: `modules/${MOD}/maps/${def.map}.webp` }, width: M.W * G, height: M.H * G, padding: 0, backgroundColor: "#0b0b0d",
     grid: { type: 1, size: G, distance: 5, units: "ft", alpha: 0.15 }, tokenVision: true, fog: { exploration: true },
-    environment: { darknessLevel: M.darkness }, walls: M.walls, lights: M.lights, notes });
+    environment: { darknessLevel: BRIGHT[def.map]?.d ?? M.darkness, ...(BRIGHT[def.map] ? { globalLight: { enabled: true } } : {}) }, walls: M.walls,
+    lights: BRIGHT[def.map] ? scaleLights(M.lights, BRIGHT[def.map].k) : M.lights, notes });
   try { const { setBackground } = await import("./ch1maps.js?v=21"); await setBackground(sc, `${def.map}.webp`); } catch (e) { console.warn(MOD, e); }
   // cover regions
   try {
@@ -473,8 +493,7 @@ export async function createChapter(ch) {
   }
   ui.notifications.info(`${C.title}: ${made.length ? "สร้างฉาก " + made.join(", ") : "มีฉากอยู่แล้ว"} · NPC ${Object.keys(actors).length} แบบ · ดูบันทึก "${C.title} (DM)"`);
   j.sheet?.render(true);
-  let first = game.scenes.getName(C.scenes[0].name);
-  if (ch === 3) { try { const m = await import("./ch3out.js?v=21"); first = (await m.createCh3Start()) ?? first; } catch (e) { console.warn(MOD, "ch3out", e); } }
+  const first = game.scenes.getName(C.scenes[0].name);
   return first;
 }
 export async function createAllChapters() { for (const c of [2, 3, 4]) await createChapter(c); }
@@ -487,24 +506,7 @@ export async function placeLootPiles(sc, defs) {
   for (const [name, pos, items, gp, icon] of defs) {
     const spot = `loot-${name}`;
     const have = sc.tokens.find((t) => t.getFlag(MOD, "spot") === spot);
-    if (have) {
-      if (have.x !== Math.round(pos[0] * G) || have.y !== Math.round(pos[1] * G)) await have.update({ x: Math.round(pos[0] * G), y: Math.round(pos[1] * G) }, { animate: false });
-      // top up a chest that was placed before some items existed (never re-adds something players already took out)
-      try {
-        const pile = have.actor, stocked = have.getFlag(MOD, "stocked");
-        const names = new Set(pile?.items.map((i) => i.name) ?? []);
-        const add = items.filter(([id]) => !(stocked ?? []).includes(id) && itemData(id) && (stocked ? true : !names.has(game.items.find((i) => i.getFlag(MOD, "id") === id)?.name)));
-        if (pile && add.length) {
-          const data = add.map(([id, q]) => itemData(id, q));
-          try { if (game.itempiles?.API?.addItems) await game.itempiles.API.addItems(pile, data); else await pile.createEmbeddedDocuments("Item", data); }
-          catch { await pile.createEmbeddedDocuments("Item", data); }
-          ui.notifications.info(`เติมของในหีบ "${name}": ${data.map((d) => d.name).join(", ")}`);
-        }
-        const all = items.map(([id]) => id).filter((id) => itemData(id));
-        if (pile && JSON.stringify(all) !== JSON.stringify(stocked ?? [])) await have.setFlag(MOD, "stocked", all);
-      } catch (e) { console.warn(MOD, "top-up", name, e); }
-      continue;
-    }
+    if (have) { if (have.x !== Math.round(pos[0] * G) || have.y !== Math.round(pos[1] * G)) await have.update({ x: Math.round(pos[0] * G), y: Math.round(pos[1] * G) }, { animate: false }); continue; }
     const r = await lootPile(sc, name, pos, items, gp, icon, spot);
     if (r) n++;
   }

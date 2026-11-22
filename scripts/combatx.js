@@ -348,7 +348,7 @@ const COMBAT_FEATS = [
     desc: "Action (คนขับเท่านั้น): หักรถหลบออกจากวงล้อมศัตรู เหมือน Disengage เทิร์นนี้ขับออกจากศัตรูโดยไม่โดนโจมตีสวน" },
   { key: "useitem", name: "ใช้ของในกระเป๋า", type: "action", img: "modules/arkane-1920s/hud/hud-useitem.webp", fn: () => useBagItem(),
     desc: "Action: เปิดรายการของที่ตัวละครมีและใช้ได้ (ยา ของใช้ ตะเกียงน้ำมันที่ขว้างได้ ฯลฯ) เลือกอย่างที่จะใช้ · ตะเกียงน้ำมัน: ขว้างไม่เกิน 60 ฟุต เป้าเซฟ DEX ไม่ผ่านโดน 1d4 Fire วงไฟลุกต่ออีก 3 รอบ" },
-  { key: "askcheck", name: "ขอทอยเช็ค", type: "action", img: "modules/arkane-1920s/hud/hud-askcheck.webp", fn: () => import("./session.js?v=21").then((m) => m.askCheck()),
+  { key: "askcheck", name: "ขอทอยเช็ค", type: "action", img: "modules/arkane-1920s/hud/hud-askcheck.webp", fn: () => import("./session.js?v=23").then((m) => m.askCheck()),
     desc: "ขอ GM ให้ทอย Ability Check / ทักษะ (เช่น โน้มน้าว สังเกต ลอบเร้น) · เลือกทักษะ พิมพ์ว่ากำลังทำอะไร ทั้งตี้จะเห็น แล้ว GM กำหนด DC และให้ทอย · ไม่เสีย Action ในการต่อสู้" },
   { key: "oa", name: "โจมตีสวน (Opportunity Attack)", type: "reaction", img: "modules/arkane-1920s/hud/hud-oa.webp", fn: () => manualOA(),
     desc: "Reaction: เมื่อศัตรูที่คุณมองเห็นเดินออกจากระยะเอื้อมของคุณ ตีมันได้ 1 ครั้งด้วยอาวุธที่ถืออยู่ · ระบบเด้งถามให้เองอยู่แล้ว ปุ่มนี้ไว้กดเองเวลาที่ไม่เด้ง (เลือกเป้าไว้ก่อน หรือให้ระบบเลือกศัตรูที่อยู่ติดตัว) · ใช้ได้ 1 ครั้งต่อรอบ" },

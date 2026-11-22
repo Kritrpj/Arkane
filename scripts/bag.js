@@ -106,7 +106,7 @@ const apps = new Map();
 const { ApplicationV2 } = foundry.applications.api;
 
 const slotMap = (a) => { const raw = a.getFlag(MOD, "slots") ?? {}; const out = {}; for (const [k, id] of Object.entries(raw)) if (SLOTS[k] && a.items.get(id)) out[k] = id; return out; };
-const writeSlots = (a, m) => a.update({ [`flags.${MOD}.==slots`]: m });
+const writeSlots = (a, m) => { const FR = foundry.data?.operators?.ForcedReplacement; return a.update(FR ? { [`flags.${MOD}.slots`]: new FR(m) } : { [`flags.${MOD}.==slots`]: m }); };   // v14: ForcedReplacement replaces the old "==slots" key
 
 // first time for a character: whatever is equipped becomes slotted, everything else is put away
 export async function initSlots(a, force = false) {
