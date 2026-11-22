@@ -1,0 +1,465 @@
+.rw-card{border:1px solid #9A6B2C;background:#EFE4C9;color:#2B2620;padding:6px 8px;border-radius:2px}
+.rw-card .rw-title{font-weight:700;color:#173A38;border-bottom:1px solid #B28A4F;margin-bottom:4px}
+.rw-ok{color:#173A38;font-weight:700}.rw-bad{color:#8A2B23;font-weight:700}
+.rw-table{width:100%;font-size:12px}.rw-table th{background:#123230;color:#F3EAD6;text-align:left;padding:2px 4px}
+.rw-form .rw-hint{color:#6E5A3E;font-size:12px;margin:2px 0}
+.rw-form .rw-radio,.rw-form .rw-check{display:flex;gap:8px;align-items:flex-start;margin:4px 0}
+.rw-form .rw-radio small{opacity:.8}
+.rw-clock{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin:6px 0}
+.rw-clock span{border:1px solid #9A6B2C;text-align:center;font-size:11px;padding:4px 0}
+.rw-clock span.on{background:#173A38;color:#F3EAD6}
+.rw-journal .boxes{display:flex;gap:10px;flex-wrap:wrap}.rw-journal .boxes>div{flex:1;min-width:180px;border:1px solid #173A38;padding:6px 10px}
+.rw-journal .rumor{border:1px dashed #9A6B2C;padding:4px 8px;margin:4px 0}.rw-journal .rumor .n{font-weight:700;color:#9A6B2C;margin-right:8px}
+.rw-journal .note,.rw-journal .dm{border-left:3px solid #8A2B23;padding:4px 10px;margin:6px 0}
+.rw-journal .clock{display:flex;gap:3px}.rw-journal .clock span{flex:1;border:1px solid #173A38;text-align:center;font-size:11px}.rw-journal .clock span.f{background:#173A38;color:#F3EAD6}
+.rw-journal .num{color:#9A6B2C;margin-right:6px}
+.rw-panel{position:fixed;top:80px;right:320px;width:460px;max-width:calc(100vw - 20px);max-height:calc(100vh - 120px);display:flex;flex-direction:column;z-index:99;
+  background:#EFE4C9;color:#2B2620;border:1.5px solid #9A6B2C;box-shadow:0 0 0 4px #EFE4C9,0 0 0 5px #9A6B2C,0 8px 30px rgba(0,0,0,.5);font-size:13px}
+.rw-panel .rw-head{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#123230;color:#F3EAD6;cursor:move;font-weight:700}
+.rw-panel .rw-head a{cursor:pointer;color:#F3EAD6}
+.rw-panel .rw-body{overflow:auto;padding:10px}
+.rw-panel button{font-size:12px;line-height:1.3;width:auto;margin:0;padding:4px 8px;background:#F4EBD5;color:#2B2620;border:1px solid #9A6B2C;border-radius:2px;cursor:pointer}
+.rw-panel button:hover{background:#E2D7BA}
+.rw-panel button.on{background:#123230;color:#F3EAD6}
+.rw-panel .rw-small{font-size:11px;padding:2px 6px}
+.rw-panel .rw-danger{border-color:#8A2B23;color:#8A2B23}
+.rw-panel .rw-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.rw-panel .rw-hint{color:#6E5A3E;font-size:12px}
+.rw-clockbar{display:flex;gap:10px;align-items:center}.rw-clock.mini{flex:1;display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin:0}
+.rw-clock.mini span{height:10px;padding:0}
+.rw-ev{border:1px solid #CDBB94;background:#F4EBD5;padding:8px;margin:8px 0;border-left:4px solid #CDBB94}
+.rw-ev.st-open{border-left-color:#9A6B2C}.rw-ev.st-done{border-left-color:#173A38;opacity:.92}.rw-ev.st-locked,.rw-ev.st-blocked{opacity:.6}
+.rw-ev-top{display:flex;gap:6px;align-items:center;font-size:11px}
+.rw-chip{padding:0 6px;border:1px solid}.rw-chip.open{color:#9A6B2C}.rw-chip.done{color:#173A38}.rw-chip.locked{color:#6E5A3E}.rw-chip.blocked{color:#8A2B23}
+.rw-day{color:#6E5A3E}.rw-nexus{background:#8A2B23;color:#F6EEDC;padding:0 5px;font-weight:700;letter-spacing:.08em}
+.rw-edit{margin-left:auto;cursor:pointer;color:#9A6B2C;text-decoration:underline}
+.rw-ev-title{font-weight:700;color:#173A38;font-size:14px;margin:3px 0}
+.rw-ev-desc{margin-bottom:6px}
+.rw-opt{display:block;width:100% !important;text-align:left;margin:4px 0 !important}
+.rw-opt small{display:block;color:#6E5A3E;font-weight:400;margin-top:2px}
+.rw-delta{font-size:10px;padding:0 4px;margin-left:4px;border:1px solid}.rw-delta.up{color:#8A2B23}.rw-delta.down{color:#173A38}
+.rw-chosen{background:rgba(23,58,56,.08);padding:4px 6px;margin-bottom:4px}
+.rw-editor label{display:block;margin:4px 0;font-size:12px;color:#6E5A3E}
+.rw-editor input,.rw-editor textarea,.rw-editor select{width:100%;color:#2B2620;background:#FBF6EA;border:1px solid #CDBB94}
+.rw-grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px}.rw-grid3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px}
+.rw-optrow{border:1px solid #CDBB94;margin:6px 0;padding:4px 8px}.rw-optrow legend{color:#9A6B2C;font-weight:700}
+.rw-news{background:#F6F0DE;color:#1d1a16;border:2px double #2B2620;padding:6px 8px;font-family:Georgia,serif}
+.rw-news-head{text-align:center;font-weight:700;letter-spacing:.2em;border-bottom:1px solid #2B2620;margin-bottom:4px}
+/* tables inside cards/journals: readable in Foundry v13 dark theme */
+.rw-card table.rw-table,.rw-journal table{border-collapse:collapse;background:#FBF6EA}
+.rw-card .rw-table td,.rw-journal table td{background:#FBF6EA !important;color:#2B2620 !important;padding:2px 4px;border-bottom:1px solid #D9C9A3}
+.rw-card .rw-table tr:nth-child(odd) td,.rw-journal table tr:nth-child(odd) td{background:#F2E8CF !important}
+.rw-card .rw-table th,.rw-journal table th{background:#123230 !important;color:#F3EAD6 !important}
+
+/* players use Argon Combat HUD: hide the default macro hotbar (macros stay on it, Argon can still read them) */
+body.arkane-hide-hotbar #hotbar { display: none !important; }
+
+/* Arkane 1920s theme for Argon Combat HUD: brass, sepia and deep-sea tones. !important beats Argon's own inline theme variables, so every player sees it without touching settings. */
+body.arkane-argon-theme {
+  --ech-portrait-base-background: #1C1A16E6 !important;
+  --ech-portrait-base-color: #E8DCC0FF !important;
+  --ech-portrait-base-border: #8C6B3AFF !important;
+  --ech-mainAction-base-background: #2A241CE6 !important;
+  --ech-mainAction-base-color: #E8DCC0FF !important;
+  --ech-mainAction-base-border: #8C6B3AFF !important;
+  --ech-mainAction-hover-background: #5A4730E6 !important;
+  --ech-mainAction-hover-color: #FFF1C9FF !important;
+  --ech-mainAction-hover-border: #C9A25DFF !important;
+  --ech-bonusAction-base-background: #2B2A3FE6 !important;
+  --ech-bonusAction-base-color: #E8DCC0FF !important;
+  --ech-bonusAction-base-border: #8C6B3AFF !important;
+  --ech-bonusAction-hover-background: #5A5780E6 !important;
+  --ech-bonusAction-hover-color: #FFF1C9FF !important;
+  --ech-bonusAction-hover-border: #C9A25DFF !important;
+  --ech-freeAction-base-background: #1F3A3AE6 !important;
+  --ech-freeAction-base-color: #E8DCC0FF !important;
+  --ech-freeAction-base-border: #8C6B3AFF !important;
+  --ech-freeAction-hover-background: #3F6B6BE6 !important;
+  --ech-freeAction-hover-color: #FFF1C9FF !important;
+  --ech-freeAction-hover-border: #C9A25DFF !important;
+  --ech-reaction-base-background: #4A1F1FE6 !important;
+  --ech-reaction-base-color: #E8DCC0FF !important;
+  --ech-reaction-base-border: #8C6B3AFF !important;
+  --ech-reaction-hover-background: #8A4444E6 !important;
+  --ech-reaction-hover-color: #FFF1C9FF !important;
+  --ech-reaction-hover-border: #C9A25DFF !important;
+  --ech-endTurn-base-background: #2E3A22E6 !important;
+  --ech-endTurn-base-color: #E8DCC0FF !important;
+  --ech-endTurn-base-border: #8C6B3AFF !important;
+  --ech-endTurn-hover-background: #5F7347E6 !important;
+  --ech-endTurn-hover-color: #FFF1C9FF !important;
+  --ech-endTurn-hover-border: #C9A25DFF !important;
+  --ech-tooltip-header-background: #E8DCC0E6 !important;
+  --ech-tooltip-header-color: #2A241C !important;
+  --ech-tooltip-header-border: #8C6B3AFF !important;
+  --ech-tooltip-subtitle-background: #3B2F20 !important;
+  --ech-tooltip-subtitle-color: #F2E8D0 !important;
+  --ech-tooltip-subtitle-border: #8C6B3AFF !important;
+  --ech-tooltip-body-background: #2A241CE6 !important;
+  --ech-tooltip-body-color: #F2E8D0 !important;
+  --ech-tooltip-body-border: #8C6B3AFF !important;
+  --ech-abilityMenu-background: #2A241CE6 !important;
+  --ech-abilityMenu-color: #E8DCC0FF !important;
+  --ech-abilityMenu-border: #8C6B3AFF !important;
+  --ech-abilityMenu-base-color: #E8DCC0FF !important;
+  --ech-abilityMenu-base-boxShadow: #8C6B3ACC !important;
+  --ech-abilityMenu-hover-color: #FFF1C9FF !important;
+  --ech-abilityMenu-hover-boxShadow: #C9A25DCC !important;
+  --ech-buttons-base-background: #8C6B3A !important;
+  --ech-buttons-base-color: #1C1A16 !important;
+  --ech-buttons-base-border: #8C6B3A !important;
+  --ech-buttons-hover-background: #C9A25D !important;
+  --ech-buttons-hover-color: #1C1A16 !important;
+  --ech-buttons-hover-border: #C9A25D !important;
+  --ech-movement-used-background: #8A806E80 !important;
+  --ech-movement-used-boxShadow: #00000000 !important;
+  --ech-movement-baseMovement-background: #C9A25DFF !important;
+  --ech-movement-baseMovement-boxShadow: #E0BD79CC !important;
+  --ech-movement-dashMovement-background: #7FA37AFF !important;
+  --ech-movement-dashMovement-boxShadow: #98BD92CC !important;
+  --ech-movement-dangerMovement-background: #A83A32FF !important;
+  --ech-movement-dangerMovement-boxShadow: #C45A52CC !important;
+  --ech-blur-amount: blur(4px) !important;
+}
+
+/* Short/Long Rest buttons in the Argon HUD are GM-only: hide that panel for players */
+body.arkane-player .movement-hud:has(.button-hud-button) { display: none !important; }
+body.arkane-player .button-hud-button { display: none !important; }
+
+/* Rest buttons in the Argon HUD: aged-paper look matching the Player Primer (cream parchment, deep sea-green ink, brass frame) */
+.extended-combat-hud .movement-hud .button-hud-button {
+  background: linear-gradient(160deg, #EFE3C6 0%, #E2D1A8 100%) !important;
+  color: #12332D !important;
+  border: 1px solid #8C6B3A !important;
+  box-shadow: inset 0 0 0 3px #EFE3C6, inset 0 0 0 4px #8C6B3A, 0 2px 6px rgba(0, 0, 0, .45);
+  font-family: "Lora", "Sarabun", "Signika", Georgia, serif;
+  font-size: .78rem !important;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  gap: .5rem !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .45);
+}
+.extended-combat-hud .movement-hud .button-hud-button i { color: #12332D !important; font-size: 2.2rem !important; }
+.extended-combat-hud .movement-hud .button-hud-button:hover {
+  background: linear-gradient(160deg, #F6EDD3 0%, #EBDCB4 100%) !important;
+  color: #0B1F1B !important;
+  box-shadow: inset 0 0 0 3px #F6EDD3, inset 0 0 0 4px #C9A25D, 0 2px 8px rgba(201, 162, 93, .55);
+}
+.extended-combat-hud .movement-hud .button-hud-button:hover i { color: #0B1F1B !important; }
+
+/* cost line in Argon tooltips */
+.ech-tooltip .arkane-cost{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin:0 0 6px;padding:4px 6px;border:1px solid #8C6B3A;border-radius:3px;background:rgba(201,162,93,.12);font-size:.8rem}
+.ech-tooltip .arkane-cost-l{opacity:.8}
+.ech-tooltip .arkane-cost i{font-style:normal;opacity:.7}
+.ech-tooltip .arkane-cost em{flex-basis:100%;font-size:.72rem;opacity:.85}
+.ech-tooltip .arkane-cost-b{padding:1px 7px;border-radius:9px;color:#fff;letter-spacing:.02em}
+.ech-tooltip .arkane-cost-b.c-action{background:#8C6B3A}
+.ech-tooltip .arkane-cost-b.c-bonus{background:#2B2A3F;box-shadow:0 0 0 1px #6b6a9a}
+.ech-tooltip .arkane-cost-b.c-reaction{background:#4A1F1F;box-shadow:0 0 0 1px #a04a4a}
+.ech-tooltip .arkane-cost-b.c-free{background:#1F3A3A}
+.ech-tooltip .arkane-cost-b.c-long{background:#555}
+
+/* movement column in feet */
+.extended-combat-hud .movement-hud .movement-current{white-space:nowrap}
+.extended-combat-hud .movement-hud .movement-current[data-unit]::after,.extended-combat-hud .movement-hud .movement-max[data-unit]::after{content:" " attr(data-unit);font-size:.65em;opacity:.8}
+
+/* attack / damage chat cards: separate frames, who hit whom */
+.chat-message.arkane-rc{--arkane-rc:#8C6B3A;border:2px solid var(--arkane-rc)!important;border-radius:4px;box-shadow:inset 5px 0 0 var(--arkane-rc)}
+.chat-message.arkane-rc-atk{--arkane-rc:#C9A25D}
+.chat-message.arkane-rc-dmg{--arkane-rc:#9B3A3A}
+.arkane-rc-banner{margin:0 0 6px;padding:6px 8px;border-radius:3px;background:rgba(0,0,0,.28);border-left:4px solid var(--arkane-rc,#8C6B3A);line-height:1.45}
+.arkane-rc-banner.atk{border-left-color:#C9A25D}
+.arkane-rc-banner.dmg{border-left-color:#9B3A3A}
+.arkane-rc-title{font-weight:700;font-size:.95em;margin-bottom:3px}
+.arkane-rc-line{font-size:.88em}
+.arkane-rc-line small{opacity:.7}
+.arkane-rc-row{display:flex;align-items:center;gap:6px;margin-top:3px;font-size:.88em}
+.arkane-rc-note{margin-top:4px;font-size:.75em;opacity:.7}
+.arkane-chip{display:inline-flex;align-items:center;gap:3px;padding:0 6px 0 2px;border:1px solid rgba(255,255,255,.3);border-radius:10px;background:rgba(255,255,255,.08);font-weight:600;vertical-align:middle}
+.arkane-chip img{width:16px;height:16px;border:0;border-radius:50%;object-fit:cover}
+.arkane-tag{padding:0 7px;border-radius:9px;font-size:.78em;font-weight:700;color:#fff}
+.arkane-tag.hit{background:#2E6B3A}.arkane-tag.miss{background:#8B2E2E}.arkane-tag.crit{background:#B8860B}.arkane-tag.type{background:#4A1F1F}
+
+/* ===== กระเป๋า (Arkane inventory window) : dark walnut/green panels, brass frames, cream ink ===== */
+.arkane-bag{--bg:#1d1a16;--bg2:#2a241c;--brass:#8C6B3A;--gold:#C9A25D;--cream:#EFE3C6;--ink:#12332D;--green:#2E6B3A}
+.arkane-bag .window-header{background:#12332D;color:var(--cream);border-bottom:2px solid var(--brass)}
+.arkane-bag .window-content{padding:0;background:radial-gradient(ellipse at 30% 20%,#2c3a35,#14201d 70%);color:var(--cream);font-family:Georgia,"Sarabun","Noto Serif Thai",serif;position:relative;overflow:hidden}
+.arkane-bag .bag2{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(310px,1fr);grid-template-rows:minmax(0,1fr);gap:10px;position:absolute;width:980px;height:650px;transform-origin:0 0;padding:10px;box-sizing:border-box;overflow:hidden}
+.arkane-bag section{overflow:hidden;border:2px solid var(--brass);border-radius:6px;background:linear-gradient(#2a241cE6,#1d1a16F2);box-shadow:inset 0 0 0 1px #00000088,0 0 0 1px #00000066;min-height:0}
+.arkane-bag .doll{display:flex;flex-direction:column;padding:8px 10px}
+.arkane-bag .doll-title{text-align:center;font-size:1.25rem;letter-spacing:.04em;color:var(--gold);text-shadow:0 1px 2px #000;border-bottom:1px solid #8C6B3A88;padding-bottom:4px}
+.arkane-bag .doll-title small{display:block;font-size:.72rem;color:var(--cream);opacity:.75;letter-spacing:.08em}
+.arkane-bag .doll-body{flex:1 1 0;min-height:0;display:grid;grid-template-columns:62px minmax(0,1fr) 62px;grid-template-rows:minmax(0,1fr);gap:10px;margin-top:8px}
+.arkane-bag .col{display:flex;flex-direction:column;justify-content:space-between;gap:4px;min-height:0}
+.arkane-bag .slot{position:relative;display:flex;align-items:center;justify-content:center;flex:0 0 auto;width:62px;height:62px;box-sizing:border-box;padding:2px;border:2px solid var(--brass);border-radius:5px;background:radial-gradient(#00000099,#1b1813);box-shadow:inset 0 0 8px #000}
+.arkane-bag .slot .ph{position:absolute;top:6px;left:0;right:0;font-size:.5rem;letter-spacing:.06em;opacity:.4;text-align:center}
+.arkane-bag .slot em{position:absolute;left:0;right:0;bottom:3px;font-style:normal;font-size:.6rem;text-align:center;opacity:.7;white-space:nowrap;pointer-events:none}
+.arkane-bag .slot.full em{display:none}
+.arkane-bag .slot.full{border-color:var(--gold);box-shadow:inset 0 0 8px #000,0 0 6px #C9A25D66}
+.arkane-bag .slot.ok{border-color:#5fd37a;box-shadow:0 0 10px #5fd37a99}
+.arkane-bag .slot.bad{border-color:#d35f5f;box-shadow:0 0 10px #d35f5f77}
+.arkane-bag .slot.big{width:84px;height:84px}
+.arkane-bag .slot.big .ph{top:14px}
+.arkane-bag .tile{position:relative;width:100%;height:100%;box-sizing:border-box;border-radius:4px;cursor:grab;overflow:hidden}
+.arkane-bag .tile img{width:100%;height:100%;object-fit:cover;border:0;display:block;pointer-events:none}
+.arkane-bag .tile .q{position:absolute;right:2px;bottom:1px;font-size:.7rem;font-weight:700;color:#fff;text-shadow:0 0 3px #000,0 0 3px #000}
+.arkane-bag .tile.sel{outline:2px solid #fff;outline-offset:-2px}
+.arkane-bag .tile.eqx::after{content:"สวม";position:absolute;left:2px;top:2px;font-size:.55rem;padding:0 3px;border-radius:3px;background:var(--green);color:#fff}
+.arkane-bag .portrait{display:flex;flex-direction:column;gap:6px;min-width:0;min-height:0}
+.arkane-bag .pframe{position:relative;flex:1 1 0;min-height:80px;border:3px double var(--gold);border-radius:3px;overflow:hidden;background:#000}
+.arkane-bag .pframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;border:0}
+.arkane-bag .ac{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:50px;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;clip-path:polygon(50% 0,100% 12%,100% 62%,50% 100%,0 62%,0 12%);background:linear-gradient(#222b29,#0c1211);border-bottom:2px solid var(--gold)}
+.arkane-bag .ac b{font-size:1.25rem;line-height:1;color:#fff}.arkane-bag .ac small{font-size:.5rem;color:var(--gold);letter-spacing:.1em}
+.arkane-bag .hexes{display:flex;justify-content:center;align-items:flex-end;gap:4px;flex:0 0 auto}
+.arkane-bag .hex{flex:1 1 0;max-width:84px;padding:3px 0;text-align:center;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%);background:linear-gradient(#cdbb92,#a89368);color:#1d1a16}
+.arkane-bag .hex.mid{max-width:90px;padding:6px 0}
+.arkane-bag .hex b{display:block;font-size:1.05rem;line-height:1.05}.arkane-bag .hex small{font-size:.45rem;letter-spacing:.05em}
+.arkane-bag .hpb{flex:0 0 auto}
+.arkane-bag .hpb small{font-size:.55rem;letter-spacing:.1em;color:var(--gold);display:block}
+.arkane-bag .hpbar{position:relative;height:16px;border:1px solid var(--brass);border-radius:3px;background:#0c1211;overflow:hidden}
+.arkane-bag .hpbar i{position:absolute;inset:0 auto 0 0;background:linear-gradient(#35a85a,#1f7a3d)}
+.arkane-bag .hpbar.hd i{background:linear-gradient(#8a2a35,#5a1a22)}
+.arkane-bag .hpbar span{position:relative;display:block;text-align:center;font-size:.72rem;line-height:16px;text-shadow:0 0 3px #000}
+.arkane-bag .doll-foot{flex:0 0 auto;display:grid;grid-template-columns:84px minmax(0,1fr) 84px;gap:10px;align-items:center;justify-items:center;margin-top:8px;padding-top:8px;border-top:1px solid #8C6B3A88}
+.arkane-bag .stats{display:flex;flex-direction:column;align-items:center;gap:6px}
+.arkane-bag .stat{text-align:center}.arkane-bag .stat small{display:block;font-size:.6rem;letter-spacing:.12em;color:var(--cream);opacity:.8}
+.arkane-bag .stat b{font-size:1.3rem;color:var(--gold)}
+.arkane-bag .sbtns{display:flex;gap:6px}
+.arkane-bag .bag2 button{cursor:pointer;font-family:inherit}
+.arkane-bag .sbtns button,.arkane-bag .det-b button,.arkane-bag .tabs button{width:auto;height:auto;line-height:1.3;border:1px solid var(--brass);border-radius:4px;background:linear-gradient(#3b5a63,#223c45);color:var(--cream);padding:3px 10px;font-size:.78rem}
+.arkane-bag .sbtns button:hover,.arkane-bag .det-b button:hover{filter:brightness(1.25)}
+.arkane-bag .pack{display:flex;flex-direction:column;padding:8px 10px;gap:6px}
+.arkane-bag .pack-title{text-align:center;font-size:1.1rem;color:var(--gold);letter-spacing:.06em;border-bottom:1px solid #8C6B3A88;padding-bottom:3px}
+.arkane-bag .search{height:26px;border:1px solid var(--brass);border-radius:4px;background:#14110e;color:var(--cream);padding:0 8px}
+.arkane-bag .tabs{display:flex;flex-wrap:wrap;gap:4px}
+.arkane-bag .tabs button{border-radius:12px;background:transparent;padding:1px 9px;font-size:.74rem}
+.arkane-bag .tabs button.on{background:var(--brass);color:#1d1a16}
+.arkane-bag .grid{flex:1;min-height:120px;overflow-y:auto;display:grid;grid-template-columns:repeat(6,1fr);gap:4px;align-content:start;padding:4px;border:1px solid #8C6B3A88;border-radius:4px;background:#14110e}
+.arkane-bag .grid.over{box-shadow:inset 0 0 0 2px #5fd37a}
+.arkane-bag .grid .tile,.arkane-bag .grid .cell{aspect-ratio:1;height:auto;border:1px solid #8C6B3A66;background:#221d17}
+.arkane-bag .grid .tile{border-color:var(--brass)}
+.arkane-bag .detail{max-height:190px;overflow:auto;border:1px solid #8C6B3A88;border-radius:4px;background:#14110e;padding:6px}
+.arkane-bag .det-empty{opacity:.6;font-size:.78rem;text-align:center;padding:8px}
+.arkane-bag .det{display:grid;grid-template-columns:40px 1fr auto;gap:8px;align-items:center}
+.arkane-bag .det>img{width:40px;height:40px;border:1px solid var(--brass);border-radius:4px;object-fit:cover}
+.arkane-bag .det-h b{display:block;color:var(--gold)}.arkane-bag .det-h small{opacity:.75;font-size:.72rem}
+.arkane-bag .det-q{display:flex;align-items:center;gap:5px}
+.arkane-bag .det-q button{width:20px;height:20px;line-height:1;padding:0;border:1px solid var(--brass);border-radius:50%;background:#2a241c;color:var(--cream)}
+.arkane-bag .det-b{grid-column:1/-1;display:flex;gap:5px;justify-content:flex-end}
+.arkane-bag .det-b .pri{background:linear-gradient(#2E6B3A,#1d4a28)}.arkane-bag .det-b .dng{background:linear-gradient(#7a2c2c,#4a1a1a)}
+.arkane-bag .det-d{margin-top:6px;border-top:1px dashed #8C6B3A88;padding-top:5px;font-size:.8rem;line-height:1.4}
+.arkane-bag .wl{font-size:.8rem;margin-bottom:2px}
+.arkane-bag .st{margin-left:6px;padding:0 8px;border-radius:9px;color:#fff;font-size:.7rem}
+.arkane-bag .st.ok,.arkane-bag .bar i.ok{background:#2E6B3A}.arkane-bag .st.warn,.arkane-bag .bar i.warn{background:#B8860B}.arkane-bag .st.bad,.arkane-bag .bar i.bad{background:#8B2E2E}
+.arkane-bag .bar{height:8px;border:1px solid var(--brass);border-radius:4px;background:#0c1211;overflow:hidden}
+.arkane-bag .bar i{display:block;height:100%}
+.arkane-bag .coins{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.arkane-bag .coin{padding:0 8px;border:1px solid var(--brass);border-radius:10px;background:#C9A25D22;font-size:.75rem}
+
+/* Argon weapon-set strip (hidden: weapons come from the bag's weapon / off-hand slots) */
+body.arkane-hide-wsets .extended-combat-hud .weapon-sets{display:none!important}
+/* players: no MACRO button in Argon (checks are asked from the Skills panel instead) */
+body.arkane-player .extended-combat-hud .actions-container:has(.action-element[style*="dice-target"]){display:none!important}
+
+/* hover explanations in the bag */
+.arkane-bag [data-tip]{cursor:help}
+.arkane-bag .shint{font-size:.62rem;opacity:.6;text-align:center}
+.arkane-tip{position:fixed;z-index:100000;display:none;max-width:340px;padding:8px 11px;border:1px solid #8C6B3A;border-radius:5px;background:#14110eF2;color:#EFE3C6;font:.8rem/1.45 Georgia,"Sarabun","Noto Serif Thai",serif;white-space:pre-line;box-shadow:0 4px 14px #000a;pointer-events:none}
+
+/* Hit Dice as coffee cups */
+.arkane-bag .cups{display:flex;flex-wrap:wrap;align-items:center;gap:2px 3px;padding:3px 5px;border:1px solid var(--brass);border-radius:3px;background:#0c1211;min-height:30px}
+.arkane-bag .cups em{margin-left:auto;font-style:normal;font-size:.72rem;opacity:.85}
+.arkane-bag .cup{width:22px;height:22px;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.arkane-bag .cup .bd{stroke:#6b5a48}.arkane-bag .cup .hl,.arkane-bag .cup .sc{stroke:#6b5a48}.arkane-bag .cup .st{stroke:none}
+.arkane-bag .cup.full .bd{fill:#6b3f22;stroke:#e0b873}
+.arkane-bag .cup.full .hl,.arkane-bag .cup.full .sc{stroke:#e0b873}
+.arkane-bag .cup.full .st{stroke:#e8d9bd;opacity:.8}
+.arkane-bag .cup.empty{opacity:.45}
+
+/* ===== Bag skin v2 — leather & brass. Optional art (drop files in modules/arkane-1920s/assets/bag/): bg.webp panel.webp slot-<name>.webp coin-<pp|gp|ep|sp|cp>.webp ===== */
+.arkane-bag .window-content{background:url("../assets/bag/bg.webp") center/cover,repeating-linear-gradient(90deg,#ffffff05 0 1px,transparent 1px 7px),radial-gradient(ellipse at 28% 12%,#3a4d45 0,#1a2822 52%,#0b110e 100%)}
+.arkane-bag .window-header{background:linear-gradient(#1b4a40,#0f2d27);border-bottom:2px solid #C9A25D;box-shadow:0 2px 8px #000a}
+.arkane-bag section{position:relative;border:1px solid #000;border-radius:9px;background:url("../assets/bag/panel.webp") center/cover,repeating-linear-gradient(45deg,#ffffff04 0 2px,transparent 2px 5px),linear-gradient(160deg,#3b3025,#241c14 58%,#1a140e);box-shadow:inset 0 0 0 2px #C9A25D66,inset 0 0 0 4px #000b,inset 0 0 34px #000c,0 5px 16px #000b}
+.arkane-bag section::before{content:"";position:absolute;inset:7px;border:1px solid #C9A25D2e;border-radius:6px;pointer-events:none}
+.arkane-bag .doll-title,.arkane-bag .pack-title{font-size:1.4rem;letter-spacing:.09em;border-bottom:0;padding-bottom:6px;background:linear-gradient(#f3dca0,#c18f3c);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 1px 1px #000)}
+.arkane-bag .doll-title small{-webkit-text-fill-color:#EFE3C6;color:#EFE3C6;font-size:.72rem;opacity:.8}
+.arkane-bag .doll-title::after,.arkane-bag .pack-title::after{content:"";display:block;height:9px;margin-top:3px;background:linear-gradient(90deg,transparent,#C9A25D 30%,#C9A25D 70%,transparent) center/100% 1px no-repeat,radial-gradient(circle,#C9A25D 0 3px,transparent 3.5px) center/9px 9px no-repeat}
+.arkane-bag .doll-foot{border-top:0;position:relative}
+.arkane-bag .doll-foot::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,#C9A25D,transparent)}
+
+/* equipment slots */
+.arkane-bag .slot{border:2px solid #7a5d30;border-radius:8px;background:radial-gradient(circle at 50% 30%,#2c2a25,#0f0e0c 78%);box-shadow:inset 0 3px 7px #000,inset 0 0 0 1px #000a,0 1px 0 #C9A25D55,0 3px 6px #0008;transition:box-shadow .15s,border-color .15s}
+.arkane-bag .slot .gl{position:absolute;top:8px;left:50%;width:28px;height:28px;margin-left:-14px;fill:none;stroke:#C9A25D;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;opacity:.3;pointer-events:none}
+.arkane-bag .slot.big .gl{top:12px;width:40px;height:40px;margin-left:-20px}
+.arkane-bag .slot .phi{position:absolute;inset:4px;width:calc(100% - 8px);height:calc(100% - 8px);object-fit:contain;border:0;opacity:.55;pointer-events:none}
+.arkane-bag .slot .ph{display:none}
+.arkane-bag .slot em{color:#EFE3C6;opacity:.8;text-shadow:0 1px 2px #000;font-size:.58rem}
+.arkane-bag .slot:hover{border-color:#C9A25D}
+.arkane-bag .slot.full{border-color:#e0b873;background:radial-gradient(circle at 50% 30%,#3a3326,#14110d 80%);box-shadow:inset 0 0 8px #000,0 0 9px #C9A25D77,0 3px 6px #0008}
+.arkane-bag .slot .tile{border-radius:5px}
+
+/* portrait + stats */
+.arkane-bag .pframe{border:3px double #C9A25D;border-radius:5px;box-shadow:0 0 0 1px #000,0 4px 12px #000c,inset 0 0 18px #000a}
+.arkane-bag .ac{background:linear-gradient(#34403c,#0c1211);border-bottom:2px solid #e0b873;filter:drop-shadow(0 2px 3px #000)}
+.arkane-bag .hex{background:linear-gradient(#e9d9ae,#b39863);box-shadow:0 2px 4px #0009}
+.arkane-bag .hpbar{border:1px solid #7a5d30;border-radius:4px;box-shadow:inset 0 2px 4px #000}
+.arkane-bag .hpbar i{background:linear-gradient(#52c274,#1f7a3d)}
+.arkane-bag .cups{border:1px solid #7a5d30;border-radius:4px;box-shadow:inset 0 2px 4px #000}
+.arkane-bag .stat b{text-shadow:0 1px 2px #000}
+
+/* pack */
+.arkane-bag .search{border:1px solid #7a5d30;background:#100d0a;box-shadow:inset 0 2px 4px #000;border-radius:5px}
+.arkane-bag .tabs button{border-color:#7a5d30;color:#EFE3C6}
+.arkane-bag .tabs button.on{background:linear-gradient(#d6aa5f,#9a722f);color:#1d1a16;border-color:#e0b873}
+.arkane-bag .grid{border:1px solid #6b5230;border-radius:6px;background:#0e0c09;box-shadow:inset 0 3px 8px #000}
+.arkane-bag .grid .cell{border:1px solid #2f2820;background:linear-gradient(#17130e,#201a13);border-radius:5px;box-shadow:inset 0 1px 4px #000}
+.arkane-bag .grid .tile{border:1px solid #8c6b3a;border-radius:5px;box-shadow:0 2px 5px #000a;transition:transform .12s,box-shadow .12s}
+.arkane-bag .grid .tile:hover{transform:translateY(-2px);box-shadow:0 0 9px #e0b873aa,0 4px 8px #000a;z-index:2}
+.arkane-bag .detail{border:1px solid #6b5230;background:linear-gradient(#17130e,#100d0a);box-shadow:inset 0 2px 6px #000;border-radius:6px}
+.arkane-bag .det-empty{line-height:1.5}
+.arkane-bag .sbtns button,.arkane-bag .det-b button{border-color:#7a5d30;background:linear-gradient(#4a6b73,#25424a);box-shadow:0 1px 0 #ffffff22 inset,0 2px 3px #0009}
+
+/* purse */
+.arkane-bag .purse{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px;padding:5px 8px;border:1px solid #6b5230;border-radius:7px;background:linear-gradient(#1b150f,#100c08);box-shadow:inset 0 2px 6px #000,0 1px 0 #C9A25D33}
+.arkane-bag .pcs{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.arkane-bag .pc{display:flex;align-items:center;gap:4px;cursor:help}
+.arkane-bag .pc b{font-size:.82rem;min-width:1.2em;text-align:left;text-shadow:0 1px 2px #000}
+.arkane-bag .pc.zero{opacity:.38;filter:grayscale(.6)}
+.arkane-bag .ic{position:relative;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 2px #00000040,inset 0 2px 3px #ffffff66,0 2px 3px #000a}
+.arkane-bag .ic u{text-decoration:none;font:700 .56rem/1 Georgia,serif;color:#3b2a0a;text-shadow:0 1px 0 #ffffff66}
+.arkane-bag .ic img{position:absolute;inset:-3px;width:calc(100% + 6px);height:calc(100% + 6px);object-fit:contain;border:0}
+.arkane-bag .ic:has(img){background:none!important;box-shadow:none}.arkane-bag .ic:has(img) u{display:none}
+.arkane-bag .pc.gp .ic{background:radial-gradient(circle at 35% 30%,#fff1b8,#e2b53f 55%,#a97a17)}
+.arkane-bag .pc.ep .ic{background:radial-gradient(circle at 35% 30%,#f7efd6,#c9bb8a 55%,#8c7f4f)}
+.arkane-bag .pc.sp .ic{background:radial-gradient(circle at 35% 30%,#ffffff,#c9ced1 55%,#7f868b)}
+.arkane-bag .pc.cp .ic{background:radial-gradient(circle at 35% 30%,#ffd5b0,#c9723c 55%,#7d4220)}
+.arkane-bag .pc.pp .ic{width:38px;height:22px;border-radius:3px;background:linear-gradient(135deg,#a9d3a6,#5e9366 60%,#3f6b47);box-shadow:inset 0 0 0 2px #2b4a3066,inset 0 0 0 4px #ffffff22,0 2px 3px #000a}
+.arkane-bag .pc.pp .ic u{color:#173a22;font-size:.62rem}
+.arkane-bag .ptot{text-align:right;cursor:help;line-height:1.1}
+.arkane-bag .ptot small{display:block;font-size:.52rem;letter-spacing:.12em;color:#C9A25D}
+.arkane-bag .ptot b{font-size:1.02rem;color:#f3dca0;text-shadow:0 1px 2px #000}
+
+/* dragging near an edge must never scroll the bag (clip = cannot be scrolled, even programmatically) */
+.arkane-bag .window-content,.arkane-bag .bag2,.arkane-bag section{overflow:clip!important}
+.arkane-bag .grid{overflow-y:auto!important}
+
+/* easier-on-the-eyes numbers */
+.arkane-bag .ac b,.arkane-bag .hex b,.arkane-bag .hpbar span,.arkane-bag .pc b,.arkane-bag .ptot b,.arkane-bag .stat b,.arkane-bag .tile .q,.arkane-bag .det-q span,.arkane-bag .cups em{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
+.arkane-bag .ac{width:62px;height:70px;bottom:5px}
+.arkane-bag .ac b{font:700 1.85rem/1 "Signika","Segoe UI","Sarabun",sans-serif;color:#fff;text-shadow:0 0 2px #000,0 2px 3px #000,0 0 8px #000a;letter-spacing:.01em}
+.arkane-bag .ac small{font:700 .66rem/1 "Signika","Segoe UI","Sarabun",sans-serif;color:#f0cd82;letter-spacing:.14em;margin-top:2px;text-shadow:0 1px 2px #000}
+.arkane-bag .hex b{font:700 1.3rem/1.05 "Signika","Segoe UI","Sarabun",sans-serif;color:#1a140c;text-shadow:0 1px 0 #ffffff66}
+.arkane-bag .hex small{font-size:.5rem;font-weight:700;color:#3b2c14}
+.arkane-bag .hpbar{height:20px}
+.arkane-bag .hpbar span{font:700 .86rem/20px "Signika","Segoe UI","Sarabun",sans-serif;text-shadow:0 1px 2px #000,0 0 4px #000}
+.arkane-bag .cups em{font:700 .86rem/1 "Signika","Segoe UI","Sarabun",sans-serif;text-shadow:0 1px 2px #000;opacity:1}
+.arkane-bag .stat b{font:700 1.5rem/1.1 "Signika","Segoe UI","Sarabun",sans-serif;color:#f3dca0}
+.arkane-bag .pc b{font:700 .95rem/1 "Signika","Segoe UI","Sarabun",sans-serif;color:#fff}
+.arkane-bag .ptot b{font:700 1.2rem/1.1 "Signika","Segoe UI","Sarabun",sans-serif;color:#f6e3ae}
+.arkane-bag .tile .q{font:700 .85rem/1 "Signika","Segoe UI","Sarabun",sans-serif;padding:1px 3px;border-radius:3px;background:#000b;color:#fff;text-shadow:none;right:2px;bottom:2px}
+.arkane-bag .det-q span{font:700 1rem/1 "Signika","Segoe UI","Sarabun",sans-serif;min-width:1.4em;text-align:center}
+.arkane-bag .wl{font-size:.86rem}
+.arkane-bag .slot .phi{mix-blend-mode:screen}
+.arkane-bag .pcs{gap:4px 6px;flex-wrap:nowrap}.arkane-bag .pc{gap:3px}
+.arkane-bag .pc b{font-size:.86rem}
+.arkane-bag .ic{width:23px;height:23px}.arkane-bag .pc.pp .ic{width:34px;height:20px}
+.arkane-bag .purse{padding:5px 6px;gap:6px}
+.arkane-bag .pc.pp .ic{width:42px;height:25px}
+.arkane-bag .pc.pp .ic img{inset:0;width:100%;height:100%;filter:drop-shadow(0 2px 2px #000a)}
+
+/* when a painted slot icon exists it replaces the line-drawn placeholder and is shown clearly */
+.arkane-bag .slot .phi{inset:3px;width:calc(100% - 6px);height:calc(100% - 6px);opacity:.85}
+.arkane-bag .slot:has(.phi) .gl{display:none}
+.arkane-bag .slot.big .phi{inset:4px;width:calc(100% - 8px);height:calc(100% - 8px)}
+.arkane-bag .pc:not(.pp) .ic{width:25px;height:25px}
+.arkane-bag .pc:not(.pp) .ic img{inset:0;width:100%;height:100%;border-radius:50%;filter:drop-shadow(0 2px 2px #000a)}
+
+/* proficiency warning badge */
+.arkane-bag .tile{position:relative}
+.arkane-bag .tile .npb{position:absolute;right:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#b3261e;color:#fff;font:700 12px/16px "Signika",sans-serif;text-align:center;box-shadow:0 0 0 1px #2a0b09,0 1px 3px #000a;pointer-events:none}
+.arkane-bag .tile.np img{filter:saturate(.75)}
+
+/* gun experience bar */
+.arkane-bag .gunxp .hpbar i{background:linear-gradient(90deg,#8a5a1c,#d9a441)}
+.arkane-bag .gunxp.lv2 .hpbar i{background:linear-gradient(90deg,#2e6b3a,#5fae6b)}
+
+/* Argon action buttons: readable Thai labels */
+.extended-combat-hud .action-element.arkane-act .action-element-title{font-size:15px!important;line-height:1.15!important;font-weight:700!important;white-space:normal!important;text-align:center;letter-spacing:0;text-shadow:0 1px 2px #000}
+
+/* bag grid: plain square cells, picture fills the cell (art text cropped), name only in tooltip */
+.arkane-bag .grid{grid-template-columns:repeat(5,1fr)!important;gap:6px!important}
+.arkane-bag .grid .tile{overflow:hidden}
+.arkane-bag .grid .tile img{width:100%;height:100%;object-fit:cover;object-position:center 30%;transform:scale(1.28);transform-origin:center 30%}
+.arkane-bag .grid .tile .q{top:2px;bottom:auto;z-index:2}
+.arkane-bag .grid .tile .npb{z-index:2}
+.arkane-bag .tabs button{font-size:.7rem!important;padding:1px 7px!important}
+
+/* ===== Argon action buttons: icon area on top, solid name bar below ===== */
+.extended-combat-hud .action-hud .action-element-container .action-element.arkane-act{min-height:100px!important;padding:.3rem .4rem 2.9rem!important}
+.extended-combat-hud .action-hud .action-element-container .action-element.arkane-act .action-element-title{position:absolute!important;left:0;bottom:0;width:100%;height:2.7rem!important;min-height:0!important;padding:0 2px!important;display:flex;align-items:center;justify-content:center;font-size:20px!important;background:rgba(0,0,0,.55)!important;border-top:1px solid #8C6B3A}
+
+/* badges: "!" top-left, quantity bottom-right, so they never sit on each other or on the art centre */
+.arkane-bag .grid .tile .npb{left:2px!important;right:auto!important;top:2px!important}
+.arkane-bag .grid .tile .q{top:auto!important;bottom:2px!important;right:2px!important}
+
+/* bag grid: the picture must not size the cell (big source images were stretching rows and stacking items) */
+.arkane-bag .grid{grid-auto-rows:auto!important;align-content:start!important;overflow-x:hidden}
+.arkane-bag .grid .tile,.arkane-bag .grid .cell{position:relative;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:1/1!important;contain:size}
+.arkane-bag .grid .tile img{position:absolute!important;inset:0;width:100%!important;height:100%!important;max-width:none}
+
+/* bag grid: real square cells (padding trick) so every row gets its full height and gap */
+.arkane-bag .grid .tile,.arkane-bag .grid .cell{aspect-ratio:auto!important;contain:none!important;height:auto!important;display:block!important;position:relative}
+.arkane-bag .grid .tile::before,.arkane-bag .grid .cell::before{content:""!important;display:block!important;position:static!important;padding-top:100%!important;width:100%;height:0;background:none!important;border:0!important}
+
+/* item details = floating card over the pack, the grid keeps its full height */
+.arkane-bag .pack{position:relative}
+.arkane-bag .detail{position:absolute!important;left:14px;right:14px;bottom:62px;max-height:60%!important;z-index:20;padding:10px 12px 8px!important;background:linear-gradient(#1c1710,#120f0a)!important;border:2px solid #C9A25D!important;border-radius:8px!important;box-shadow:0 10px 28px #000e,0 0 0 1px #000!important}
+.arkane-bag .detail:has(.det-empty){display:none!important}
+.arkane-bag .detail .det-x{position:absolute;top:3px;right:5px;width:22px;height:22px;padding:0;line-height:20px;border:1px solid #7a5d30;border-radius:50%;background:#2a2218;color:#EFE3C6;cursor:pointer;font-size:12px;z-index:2}
+.arkane-bag .detail .det-x:hover{background:#7a2a22}
+.arkane-bag .detail .det{padding-right:22px}
+
+/* players: right-click token HUD keeps only the module buttons (no HP/bar edit, elevation, status, target, combat, visibility...) */
+body.arkane-player #token-hud .attribute,
+body.arkane-player #token-hud .elevation,
+body.arkane-player #token-hud .control-icon:not(.arkane-keep),
+body.arkane-player #token-hud .status-effects{display:none!important}
+.arkane-restall{margin:4px 6px;padding:4px 10px;border:1px solid #C9A25D;border-radius:5px;background:linear-gradient(#3b5a63,#223c45);color:#EFE3C6;cursor:pointer;font-weight:700;width:auto;flex:none}
+.arkane-restall:hover{background:linear-gradient(#4a7380,#2c4d58)}
+
+/* spell / feature panel: sits above the action row and must never be covered by it */
+.extended-combat-hud .action-hud .features-accordion{z-index:6!important;overflow:visible!important}
+.extended-combat-hud .action-hud .features-accordion-content{margin-bottom:84px!important}
+
+/* Argon: "ขอทอยเช็ค" as a full-size button; the tile left in its old column stretches to the same height */
+.extended-combat-hud .arkane-big-ask{flex:0 0 175px!important;width:175px!important;height:200px!important;min-width:175px!important;min-height:200px!important;max-width:none!important;max-height:none!important;margin:0!important}
+.extended-combat-hud .actions-container > .action-element-container{align-self:stretch}
+
+/* Argon: small paired buttons (feats such as Shove, Disengage, Use Item) get the same brown/blue fill and border as the other buttons of their panel */
+.extended-combat-hud .actions-container .feature-element{background-color:var(--ech-mainAction-base-background);border-color:var(--ech-mainAction-base-border)}
+.extended-combat-hud .actions-container .feature-element:hover{background-color:var(--ech-mainAction-hover-background);border-color:var(--ech-mainAction-hover-border)}
+.extended-combat-hud .actions-container[data-title*="bonus" i] .feature-element{background-color:var(--ech-bonusAction-base-background);border-color:var(--ech-bonusAction-base-border)}
+.extended-combat-hud .actions-container[data-title*="bonus" i] .feature-element:hover{background-color:var(--ech-bonusAction-hover-background);border-color:var(--ech-bonusAction-hover-border)}
+.extended-combat-hud .actions-container[data-title*="reaction" i] .feature-element{background-color:var(--ech-reaction-base-background);border-color:var(--ech-reaction-base-border)}
+.extended-combat-hud .actions-container[data-title*="reaction" i] .feature-element:hover{background-color:var(--ech-reaction-hover-background);border-color:var(--ech-reaction-hover-border)}
+/* a tile left alone in its column fills the column height */
+.extended-combat-hud .action-element-container > .feature-element:only-child{max-height:none!important;height:auto!important;flex:1 1 auto!important}
+
+/* Argon basic-action icons replaced by the engraved sepia set (modules/arkane-1920s/hud) */
+.extended-combat-hud [style*="icons/armor-upgrade.webp"]{background-image:url("../hud/hud-dodge.webp")!important;background-size:cover!important;background-position:center!important;background-origin:border-box!important}
+.extended-combat-hud [style*="icons/walking-boot.webp"]{background-image:url("../hud/hud-dash.webp")!important;background-size:cover!important;background-position:center!important;background-origin:border-box!important}
+.extended-combat-hud [style*="icons/journey.webp"]{background-image:url("../hud/hud-disengage.webp")!important;background-size:cover!important;background-position:center!important;background-origin:border-box!important}
+.extended-combat-hud [style*="icons/clockwork.webp"]{background-image:url("../hud/hud-ready.webp")!important;background-size:cover!important;background-position:center!important;background-origin:border-box!important}
+.extended-combat-hud [style*="icons/cloak-dagger.webp"]{background-image:url("../hud/hud-hide.webp")!important;background-size:cover!important;background-position:center!important;background-origin:border-box!important}
+.extended-combat-hud [style*="icons/shield-bash.webp"]{background-image:url("../hud/hud-shove.webp")!important;background-size:cover!important;background-position:center!important;background-origin:border-box!important}
+.extended-combat-hud [style*="icons/spell-book.webp"]{background-image:url("../hud/hud-cast.webp")!important;background-size:cover!important;background-position:center!important;background-origin:border-box!important}
+
+
+/* --- driver HUD: a vehicle's driver only keeps drive / ram (พุ่งชน) / dive (ดิฟหลบ) / ask-check; the driver-only buttons are hidden for everybody else --- */
+body.arkane-driver .extended-combat-hud .action-element:not(.arkane-keep),
+body.arkane-driver .extended-combat-hud .feature-element:not(.arkane-keep) { display: none !important; }
+body:not(.arkane-driver) .extended-combat-hud .arkane-drv-only { display: none !important; }
+
+/* bag button ("ใช้ของในกระเป๋า") stands beside the Dash column as a full-height tile */
+.extended-combat-hud .arkane-big-bag{flex:0 0 80px!important;width:80px!important;min-width:80px!important;max-width:none!important;height:auto!important;min-height:100px!important;max-height:none!important;align-self:stretch!important;margin:0!important}

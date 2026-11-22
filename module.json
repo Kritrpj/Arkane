@@ -1,0 +1,37 @@
+{
+  "id": "arkane-1920s",
+  "title": "Arkane 1920s: Campaign Toolkit",
+  "description": "ชุดเครื่องมือแคมเปญ Arkane 1920s (D&D 2024 แนว Cthulhu): แต้มหวาดผวา นาฬิกาห้วงนิทรา เส้นเวลา Nexus เจอร์นัล Player Primer / World Bible และฉาก/แผนที่ของทุกบท",
+  "version": "4.3.1",
+  "authors": [
+    {
+      "name": "Dorf"
+    }
+  ],
+  "compatibility": {
+    "minimum": "12",
+    "verified": "13"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system"
+      }
+    ],
+    "recommends": [
+      {
+        "id": "item-piles",
+        "type": "module",
+        "reason": "ร้านตลาดมืดของฟินช์ (ซื้อขายด้วยเงินวาเลอเรีย)"
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/arkane.js"
+  ],
+  "styles": [
+    "styles/rw.css"
+  ],
+  "socket": true
+}
