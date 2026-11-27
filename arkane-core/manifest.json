@@ -1,0 +1,13 @@
+{
+  "version": "0.10.0",
+  "features": [
+    "castFx",
+    "castIcon",
+    "charge",
+    "heights",
+    "props",
+    "shove",
+    "spells",
+    "zones"
+  ]
+}

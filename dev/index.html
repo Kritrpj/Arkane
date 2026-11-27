@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <title>Arkane harness</title>
+  <link rel="stylesheet" href="./styles/base.css">
+  <link rel="stylesheet" href="./styles/toolbar.css">
+  <link rel="stylesheet" href="./styles/board.css">
+  <link rel="stylesheet" href="./styles/sidebar.css">
+  <link rel="stylesheet" href="./styles/inspector.css">
+</head>
+<body>
+  <header>
+    <div class="row">
+      <label>เคสทดสอบ <select id="scenario"></select></label>
+      <label>กฎ <select id="rules"></select></label>
+      <label>ผู้ผลัก <select id="actor"></select></label>
+      <label>เป้าหมาย <select id="target"></select></label>
+      <label>ท่า <select id="action"><option value="shove">ผลัก (Shove)</option><option value="charge">พุ่งชน (Charge)</option></select></label>
+      <label>โหมด <select id="mode"><option value="push">ผลัก</option><option value="prone">ล้ม (prone)</option></select></label>
+      <label title="ใส่เลข = บังคับเต๋า และ preview อัตโนมัติ  ว่าง = สุ่มจริง">d20 <input id="force" type="number" min="1" max="20" placeholder="สุ่ม"></label>
+      <label title="ค่าของเต๋าดาเมจทุกลูก  ว่าง = สุ่มจริง">เต๋าดาเมจ <input id="dmg" type="number" min="1" max="6" placeholder="สุ่ม"></label>
+      <button id="preview">Preview</button>
+      <button id="go">Shove!</button>
+      <button id="undo">Undo</button>
+      <button id="reset">Reset เคส</button>
+      <label>สกิล <select id="spell"></select></label><button id="cast">ร่ายสกิล</button><span id="castInfo" style="font-size:12px;color:#9a9;max-width:520px"></span>
+    </div>
+    <div class="row tools">
+      <span class="group">เครื่องมือ
+        <label><input type="radio" name="tool" value="move" checked> ลาก/เลือก</label>
+        <label><input type="radio" name="tool" value="height"> ความสูง <input id="heightFt" type="number" value="-20" step="5"> ฟุต</label>
+        <label><input type="radio" name="tool" value="surface"> พื้นผิว
+          <select id="surface"><option value="oil">oil</option><option value="ice">ice</option><option value="mud">mud</option><option value="water">water</option><option value="">(ลบ)</option></select></label>
+        <label><input type="radio" name="tool" value="wall"> กำแพง (คลิกใกล้ขอบช่อง)</label>
+        <label><input type="radio" name="tool" value="zone"> วาง Zone</label>
+        <label><input type="radio" name="tool" value="probe"> ส่องจุด</label>
+      </span>
+      <span class="group">Zone
+        <select id="zKind"></select>
+        <label>รูป <select id="zShape"><option value="circle">วงกลม</option><option value="cell">ทั้งช่อง</option></select></label>
+        <label>รัศมี <input id="zRadius" type="number" value="5" min="0.5" step="0.5"> ฟุต</label>
+        <label title="ใส่แกลลอน = โหมดตามปริมาตร (สาร+วงกลมเท่านั้น): รัศมีคำนวณจากปริมาตรและความลึก">น้ำ <input id="zGallons" type="number" value="0" min="0" step="1"> แกลลอน ลึก <input id="zDepth" type="number" value="0.05" min="0.01" step="0.01"> ฟุต</label>
+        <label title="0 = ไม่หมดอายุ (เฉพาะสาร)">อยู่ <input id="zRounds" type="number" value="0" min="0" step="1"> รอบ</label>
+        <label>ช่องถูกคลุมเมื่อ <select id="zCover"><option value="center">จุดกลางอยู่ในรูป</option><option value="fraction">คลุม ≥ 50%</option></select></label>
+      </span>
+      <span class="group">
+        <button id="addCreature">+ ตัวละคร</button><button id="addCrate">+ ลัง</button><button id="addStatue">+ รูปปั้น</button><button id="del">ลบที่เลือก</button>
+      </span>
+      <span class="group">แมพ <input id="cols" type="number" min="4" max="30"> × <input id="rows" type="number" min="4" max="20"></span>
+    </div>
+  </header>
+  <main>
+    <div class="board"><canvas id="cv"></canvas><div id="scNote" class="scnote"></div></div>
+    <aside>
+      <details open><summary>ผลลัพธ์</summary><div id="out"></div></details>
+      <details open><summary>คิดอะไรยังไง (ทีละขั้น)</summary><div id="why"></div></details>
+      <details open><summary>Zone</summary><div id="zonePanel"></div></details>
+      <details open><summary>แก้ค่าตัวที่เลือก</summary><div id="inspector"></div></details>
+      <details><summary>ทุกอย่างบนกระดาน</summary><div id="table"></div></details>
+      <p class="hint">คลิก = เป้าหมาย · Shift+คลิก = ผู้ผลัก · ลาก = ย้าย (ต้องเป็นช่องว่าง)<br>
+      ใส่ d20 ไว้ = preview อัตโนมัติทุกครั้งที่แก้ ตัวเลขใน "คิดอะไรยังไง" คือค่าที่กฎใช้จริง<br>
+      Preview = คำนวณอย่างเดียว · Shove! = เปลี่ยนกระดานจริง (Undo ย้อนได้)</p>
+    </aside>
+  </main>
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>

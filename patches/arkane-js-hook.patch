@@ -1,0 +1,18 @@
+--- a/scripts/arkane.js	2026-11-27 06:50:40.416829197 +0000
++++ b/scripts/arkane.js	2026-11-27 06:50:40.418035673 +0000
+@@ -5,6 +5,7 @@
+ import { createPlayers } from "./pcs.js?v=21";
+ import { levelUp } from "./spells.js?v=21";
+ import { registerCombatX, throwOil, shove, disengage, clearOil } from "./combatx.js?v=22";
++import { registerCore } from "../dist/arkane-core.js?v=0.7.0";   // TS core (src/ -> dist/), see CORE.md
+ import { registerArmorSwap } from "./gear.js?v=21";
+ import { registerCover, addBarCover } from "./cover.js?v=21";
+ import { createBlackMarket } from "./merchant.js?v=21";
+@@ -405,6 +406,7 @@
+   // same as pressing the "Toggle Argon Combat HUD" button: the HUD then follows whichever token is selected
+   setTimeout(() => { try { if (game.modules.get("enhancedcombathud")?.active && ui.ARGON && !ui.ARGON.enabled) ui.ARGON.toggle(true); } catch (e) { console.warn(MOD, "argon toggle", e); } }, 1500);
+   try { registerCombatX(); } catch (e) { console.warn(MOD, "combatx", e); }
++  try { registerCore(); } catch (e) { console.warn(MOD, "core", e); }
+   try { registerVehicles(); } catch (e) { console.warn(MOD, "vehicles", e); }
+   if (!game.user.isGM) return;
+   setTimeout(() => ensureItemPiles(true).catch(() => {}), 3000);

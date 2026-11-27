@@ -1,0 +1,15 @@
+aside { width: 420px; padding: 10px; border-left: 1px solid #333; overflow: auto; }
+aside details { margin-bottom: 10px; }
+aside summary { cursor: pointer; font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+.line { padding: 6px 8px; margin-bottom: 6px; background: #1b1b1f; border-left: 3px solid #555; border-radius: 3px; font-size: 13px; }
+.line.bad { border-color: #c44; } .line.good { border-color: #4a4; } .line small { display: block; color: #999; margin-top: 3px; }
+.badge { padding: 6px 8px; margin-bottom: 8px; border-radius: 3px; font-size: 12px; }
+.badge.ok { background: #1c3322; color: #9fdc9f; } .badge.bad { background: #3a1c1c; color: #f0a0a0; }
+.trace { margin: 0; padding-left: 20px; font-size: 13px; }
+.trace li { margin-bottom: 10px; } .trace li > b { color: #ffd75e; }
+.trace .step { margin: 3px 0 0; padding: 3px 6px; background: #17171b; border-radius: 3px; font-family: ui-monospace, Menlo, monospace; font-size: 12px; line-height: 1.5; color: #cfd3e0; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 3px 5px; border-bottom: 1px solid #2a2a30; } th { color: #888; font-weight: 500; }
+tr.sel td { background: #26262c; }
+.zrow { font-size: 12px; margin: 4px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.zinfo { font-size: 12px; background: #1b1b1f; border: 1px solid #333; border-radius: 4px; padding: 6px; margin: 6px 0; line-height: 1.5; }

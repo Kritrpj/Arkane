@@ -1,0 +1,16 @@
+:root { color-scheme: dark; font-family: system-ui, sans-serif; }
+body { margin: 0; background: #111; color: #ddd; }
+header { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px; background: #1b1b1f; border-bottom: 1px solid #333; align-items: center; }
+header label { font-size: 13px; display: flex; gap: 4px; align-items: center; }
+select, input, button { background: #26262c; color: #ddd; border: 1px solid #444; border-radius: 4px; padding: 4px 8px; }
+input { width: 70px; }
+button { cursor: pointer; } button:hover { background: #33333b; }
+#go { background: #7a2a2a; }
+main { display: flex; height: calc(100vh - 52px); }
+.board { flex: 1; overflow: auto; padding: 10px; }
+canvas { background: #0b0b0d; border: 1px solid #333; }
+aside { width: 340px; padding: 10px; border-left: 1px solid #333; overflow: auto; }
+aside h3 { margin: 0 0 8px; }
+.line { padding: 6px 8px; margin-bottom: 6px; background: #1b1b1f; border-left: 3px solid #555; border-radius: 3px; font-size: 13px; }
+.line.bad { border-color: #c44; } .line.good { border-color: #4a4; } .line small { display: block; color: #999; margin-top: 3px; }
+.hint { font-size: 12px; color: #888; line-height: 1.6; }

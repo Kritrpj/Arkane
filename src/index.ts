@@ -1,0 +1,33 @@
+// Library entry (types + pure rules for tests and the harness). Foundry loads arkane-core/loader.js instead, see CORE.md.
+export * from "./model/creature";
+export * from "./model/thing";
+export * from "./model/world";
+export * from "./model/effect";
+export * from "./model/check";
+export * from "./model/zone";
+export { makeCreature, makeProp } from "./model/make";
+export { Ruleset } from "./rules/ruleset";
+export { RulesetPhysics } from "./rules/physicsRuleset";
+export { resolveMass, massFromHeight } from "./rules/mass";
+export { resolvePropMass } from "./rules/propMass";
+export { randomDice, scriptedDice, recordDice, type Dice } from "./rules/dice";
+export { formatCheck } from "./rules/check";
+export { ACTIONS, Shove, type ActionId } from "./actions";
+export type { Action, Ctx } from "./actions/types";
+export { MATERIALS, SUBSTANCES, CATALOG, MAX_ZONES } from "./data/zones";
+export { ZoneField, resolveZones, makeZone, zoneFromVolume, gallonsToFt3, radiusFromVolume, expiryAfter, isExpired, minutesToRounds, concentrationDC, zonesBoundTo } from "./rules/zones";
+export { zoneTick, type TickItem } from "./rules/zoneTick";
+export { turnReport, type Report, type ReportItem } from "./rules/turnReport";
+export { GridWorld } from "./world/gridWorld";
+export { registerCore, CORE_VERSION } from "./foundry/register";   // all-in-one, for tests
+export * from "./spells/types";
+export { planFx, stagesOf, describePlan } from "./spells/fxPlan";
+export { autoRefs, autoFor, type FxManifest } from "./spells/fxAuto";
+export { drawPreview, timeline, previewColour } from "./spells/fxPreview";
+export { Catalog } from "./spells/catalog";
+export { resolveFrom, applyPatch, paths } from "./spells/resolve";
+export { validateCatalog } from "./spells/validate";
+export { spell } from "./spells/define";
+export { slugOf } from "./spells/slug";
+export { SPELLS } from "./data/spells";
+export { CASTERS, casterKeyOf } from "./data/casters";

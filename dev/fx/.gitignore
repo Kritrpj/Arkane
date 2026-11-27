@@ -1,0 +1,4 @@
+# effect files (JB2A etc.) are licensed assets: keep them on your machine only, never in the repo
+*
+!.gitignore
+!README.md

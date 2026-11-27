@@ -1,0 +1,23 @@
+{
+  "name": "arkane-core",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config vite.config.ts",
+    "build": "node tools/build.mjs",
+    "release": "node tools/release.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test",
+    "icons": "node tools/scan-icons.mjs",
+    "fx": "node tools/scan-fx.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.11",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
+  },
+  "version": "0.10.0"
+}
